@@ -10,4 +10,12 @@ router.get("/",(req,res)=>{
     });
     return res.json({countries})
 })
+router.get("/:cn",(req,res)=>{
+    let cn=req.query.cn.toUpperCase();
+    if(cn in data){
+        const country=data[cn];
+        delete(country["states"]);
+    }
+    return res.json({country})
+})
 export default router;
