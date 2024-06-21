@@ -15,7 +15,11 @@ router.get("/:cn",(req,res)=>{
     if(cn in data){
         const country=data[cn];
         delete(country["states"]);
+        return res.json({country})
     }
-    return res.json({country})
+    return res.json({
+        status:"error",
+        message:"Invalid request"
+    })
 })
 export default router;
