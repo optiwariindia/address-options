@@ -14,7 +14,7 @@ router.get("/:cn",(req,res)=>{
     let cn=req.params.cn.toUpperCase();
     if(cn in data){
         const country=data[cn];
-        delete(country["states"]);
+        // delete(country["states"]);
         return res.json({country})
     }
     return res.json({
