@@ -1,9 +1,10 @@
 import { Router } from "express";
 import fs from "fs";
 // let data=fs.readdirSync(".");
-let data=JSON.parse(fs.readFileSync("./databank/theworld.json","utf-8"));
+
 const router=Router();
 router.get("/",(req,res)=>{
+    let data=JSON.parse(fs.readFileSync("./databank/theworld.json","utf-8"));
     let countries=Object.values(data).map(cn=>{
         delete(cn.states);
         return cn;
@@ -11,6 +12,7 @@ router.get("/",(req,res)=>{
     return res.json({countries})
 })
 router.get("/:cn",(req,res)=>{
+    let data=JSON.parse(fs.readFileSync("./databank/theworld.json","utf-8"));
     let cn=req.params.cn.toUpperCase();
     if(cn in data){
         const country=data[cn];
